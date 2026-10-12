@@ -1,0 +1,383 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<title>Vertici LLC</title>
+<meta name="description" content="Vertici LLC helps manufacturers roll out connected worker programs that frontline teams actually adopt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: "route sheet" — a shop-floor round sheet becoming a digital checklist; left-aligned editorial columns, mono field labels like a work instruction form */
+:root{
+  --paper:#f3f4f1;
+  --panel:#ffffff;
+  --ink:#1b262e;
+  --ink-soft:#4a5963;
+  --rule:#cfd5d4;
+  --andon:#e3a81c;      /* andon-light amber: fills and marks only */
+  --steel:#2f5d73;      /* links and accents on text */
+  --ok:#3f7d4e;
+  --on-andon:#1b262e;
+  --f-display:"Archivo","Arial Narrow",Helvetica,sans-serif;
+  --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --s1:.8125rem; --s2:1rem; --s3:1.1875rem; --s4:1.5rem; --s5:2.25rem; --s6:clamp(2.4rem,5.4vw,4.1rem);
+  --wrap:72rem;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#131b20;--panel:#1a242b;--ink:#e7ebea;--ink-soft:#a3b0b6;--rule:#2d3a42;
+  --andon:#f0b429;--steel:#8cc0d6;--ok:#7cc08c;--on-andon:#131b20;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#131b20;--panel:#1a242b;--ink:#e7ebea;--ink-soft:#a3b0b6;--rule:#2d3a42;
+  --andon:#f0b429;--steel:#8cc0d6;--ok:#7cc08c;--on-andon:#131b20;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:var(--s3);line-height:1.6;margin:0}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+h1,h2,h3{font-family:var(--f-display);font-stretch:112%;line-height:1.08;text-wrap:balance;margin:0;letter-spacing:-.01em}
+p{margin:0}
+a{color:var(--steel)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--andon);outline-offset:3px}
+.label{font-family:var(--f-mono);font-size:var(--s1);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--f-display);font-weight:700;font-size:var(--s2);text-decoration:none;padding:.85rem 1.3rem;border-radius:3px;border:2px solid var(--ink)}
+.btn-primary{background:var(--andon);color:var(--on-andon);border-color:var(--andon)}
+.btn-ghost{color:var(--ink)}
+.btn:hover{transform:translateY(-1px)}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.9rem}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink);font-family:var(--f-display);font-weight:800;font-stretch:118%;font-size:1.25rem}
+.brand svg{flex:none}
+.nav ul{display:flex;gap:1.5rem;list-style:none;margin:0;padding:0;font-family:var(--f-display);font-weight:600;font-size:var(--s2)}
+.nav ul a{color:var(--ink);text-decoration:none}
+.nav ul a:hover{color:var(--steel)}
+@media (max-width:760px){.nav ul li:not(:last-child){display:none}}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,4rem);align-items:center;padding-block:clamp(3rem,7vw,5.5rem)}
+.hero>*{min-width:0}
+.hero h1{font-size:var(--s6);font-weight:800}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--andon) 62%,var(--andon) 92%,transparent 92%)}
+.hero .lede{margin-top:1.4rem;max-width:36rem;color:var(--ink-soft);font-size:1.25rem}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+@media (max-width:860px){.hero{grid-template-columns:1fr}}
+
+/* hero media */
+.hero-media{position:relative;margin:0;padding-bottom:2.5rem}
+.hero-media img{display:block;width:100%;max-width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;border-radius:4px}
+.hero-media .sheet{position:absolute;left:-2.5rem;bottom:0;width:min(22rem,90%)}
+@media (max-width:860px){.hero-media img{aspect-ratio:4/3}.hero-media .sheet{left:1rem;width:calc(100% - 2rem)}}
+@media (max-width:1100px) and (min-width:861px){.hero-media .sheet{left:-1rem}}
+
+/* route sheet */
+.sheet{background:var(--panel);border:1px solid var(--rule);border-radius:4px;box-shadow:0 18px 40px -24px rgba(0,0,0,.35);font-family:var(--f-mono);font-size:.875rem}
+.sheet-head{display:flex;justify-content:space-between;gap:1rem;padding:.9rem 1.1rem;border-bottom:2px solid var(--ink)}
+.sheet-head b{font-weight:500}
+.sheet ol{list-style:none;margin:0;padding:0}
+.sheet li{display:grid;grid-template-columns:1.4rem 1fr auto;gap:.6rem;align-items:center;padding:.55rem 1rem;border-bottom:1px dashed var(--rule)}
+.box{width:1.1rem;height:1.1rem;border:1.5px solid var(--ink-soft);border-radius:2px;display:grid;place-items:center}
+.done .box{background:var(--ok);border-color:var(--ok);color:var(--panel)}
+.flag .box{background:var(--andon);border-color:var(--andon);color:var(--on-andon)}
+.sheet li span:last-child{color:var(--ink-soft)}
+.flag span:last-child{color:var(--ink);font-weight:500}
+.sheet-foot{padding:.9rem 1.1rem;color:var(--ink-soft);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.sheet li{animation:tick .5s both}
+.sheet li:nth-child(2){animation-delay:.15s}.sheet li:nth-child(3){animation-delay:.3s}.sheet li:nth-child(4){animation-delay:.45s}.sheet li:nth-child(5){animation-delay:.6s}
+@keyframes tick{from{transform:translateX(-6px)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){.sheet li{animation:none}.btn:hover{transform:none}}
+
+/* sections */
+section{padding-block:clamp(3.5rem,8vw,6rem);border-top:1px solid var(--rule)}
+.sec-head{display:grid;grid-template-columns:14rem 1fr;gap:2rem;margin-bottom:2.5rem}
+.sec-head>*{min-width:0}
+.sec-head h2{font-size:var(--s5);font-weight:750;max-width:40rem}
+.sec-head p{margin-top:1rem;max-width:38rem;color:var(--ink-soft)}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr;gap:.8rem}}
+
+/* problem */
+.stat{display:grid;grid-template-columns:auto 1fr;gap:2rem 3rem;align-items:start}
+.stat>*{min-width:0}
+.big{font-family:var(--f-display);font-stretch:125%;font-weight:800;font-size:clamp(4rem,11vw,8rem);line-height:.9;letter-spacing:-.03em}
+.big small{display:block;margin-top:.6rem;font-family:var(--f-mono);font-size:var(--s1);font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.causes{display:grid;gap:1rem;max-width:36rem}
+.causes p{padding-left:1rem;border-left:3px solid var(--andon)}
+@media (max-width:760px){.stat{grid-template-columns:1fr}}
+
+/* photo band */
+.band{position:relative;margin:0;border-top:1px solid var(--rule)}
+.band img{display:block;width:100%;max-width:100%;height:clamp(18rem,42vw,34rem);object-fit:cover;object-position:50% 62%}
+.band figcaption{position:absolute;left:0;right:0;bottom:0;padding-block:2.5rem 1.4rem;background:linear-gradient(transparent,rgba(10,16,20,.78));color:#f3f4f1}
+.band figcaption p{font-family:var(--f-display);font-stretch:112%;font-weight:700;font-size:var(--s4);line-height:1.25;max-width:34rem;text-wrap:balance}
+.band + section{border-top:0}
+
+/* approach */
+.lenses{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule);border-radius:4px;background:var(--panel)}
+.lens{padding:clamp(1.4rem,3vw,2.2rem);display:grid;gap:.9rem;align-content:start;min-width:0}
+.lens+.lens{border-left:1px solid var(--rule)}
+.lens h3{font-size:var(--s4)}
+.lens ul{margin:0;padding-left:1.1rem;display:grid;gap:.35rem}
+@media (max-width:760px){.lenses{grid-template-columns:1fr}.lens+.lens{border-left:0;border-top:1px solid var(--rule)}}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.svc{background:var(--panel);border:1px solid var(--rule);border-top:6px solid var(--ink);border-radius:4px;padding:1.6rem;display:grid;grid-template-rows:auto auto 1fr auto;gap:.9rem;min-width:0}
+.svc h3{font-size:var(--s4)}
+.svc .for{font-size:var(--s2);color:var(--ink-soft)}
+.svc ul{margin:0;padding-left:1.1rem;font-size:var(--s2);display:grid;gap:.3rem}
+.svc a{font-family:var(--f-display);font-weight:700;font-size:var(--s2);text-decoration:none}
+.svc a:hover{text-decoration:underline}
+@media (max-width:900px){.services{grid-template-columns:1fr}}
+
+/* story */
+.story{display:grid;grid-template-columns:14rem 1fr;gap:2rem}
+.story>*{min-width:0}
+.story-body{display:grid;gap:1.2rem;max-width:40rem}
+.pull{font-family:var(--f-display);font-stretch:112%;font-weight:700;font-size:var(--s4);line-height:1.25;padding-block:.4rem}
+.story-photo{margin:0}
+.story-photo img{display:block;width:100%;max-width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 40%;border-radius:4px}
+@media (max-width:760px){.story{grid-template-columns:1fr;gap:.8rem}}
+
+/* team */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.person{display:grid;grid-template-columns:1fr;gap:1rem;align-content:start;background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:1.6rem}
+.person>*{min-width:0}
+.mono{width:3.5rem;height:3.5rem;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:1.3rem}
+.person h3{font-size:var(--s4)}
+.person .role{font-family:var(--f-mono);font-size:var(--s1);letter-spacing:.06em;text-transform:uppercase;color:var(--steel);margin:.3rem 0 .8rem}
+.person p:last-child{font-size:var(--s2)}
+@media (max-width:980px){.team{grid-template-columns:1fr}.person{grid-template-columns:auto 1fr;gap:1.2rem}}
+
+/* contact */
+.contact{background:var(--ink);color:var(--paper);border-top:0}
+.contact .label{color:var(--andon)}
+.contact h2{font-size:var(--s5);max-width:34rem;margin-top:.6rem}
+.contact .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2rem;align-items:end;margin-top:2.5rem}
+.contact .grid>*{min-width:0}
+.contact .who{display:grid;gap:.2rem;font-size:var(--s2)}
+.contact .who b{font-family:var(--f-display);font-size:var(--s3)}
+.contact .who span{font-family:var(--f-mono);font-size:.9rem;overflow-wrap:anywhere;user-select:all}
+.contact .btn-primary{border-color:var(--andon)}
+@media (max-width:980px){.contact .grid{grid-template-columns:1fr 1fr;align-items:start}}
+@media (max-width:560px){.contact .grid{grid-template-columns:1fr}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .contact{background:#0c1215}}
+:root[data-theme="dark"] .contact{background:#0c1215}
+
+footer{padding-block:1.6rem;font-family:var(--f-mono);font-size:var(--s1);color:var(--ink-soft)}
+footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+</style>
+
+</head><body>
+<header>
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="#top">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect x="1" y="1" width="28" height="28" rx="3" fill="var(--ink)"/><path d="M8 8 L15 22 L22 8" fill="none" stroke="var(--andon)" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      Vertici
+    </a>
+    <ul>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#story">Our story</a></li>
+      <li><a class="btn btn-primary" style="padding:.55rem 1rem" href="#contact">Book a consultation</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <p class="label">Connected worker programs for manufacturing</p>
+      <h1 style="margin-top:1rem">Digital tools your frontline <em>actually uses</em>.</h1>
+      <p class="lede">Vertici helps manufacturers move from paper rounds and clipboards to connected worker systems, and pairs every rollout with the culture work that makes adoption stick.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#contact">Book a consultation</a>
+        <a class="btn btn-ghost" href="#services">See our services</a>
+      </div>
+    </div>
+
+    <div class="hero-media">
+      <img src="img/hero-robot-cell.jpg" alt="Smiling service engineer in a red hard hat holding a laptop beside a robotic welding arm" width="1100" height="1375">
+    <figure class="sheet" style="margin:0" aria-label="Example digital operator round">
+      <div class="sheet-head"><b>OPERATOR ROUND · LINE 3</b><span>06:00 SHIFT</span></div>
+      <ol>
+        <li class="done"><span class="box">✓</span><span>Guard interlocks checked</span><span>06:04</span></li>
+        <li class="done"><span class="box">✓</span><span>Hydraulic pressure logged</span><span>1,850 psi</span></li>
+        <li class="flag"><span class="box">!</span><span>Conveyor bearing temp high</span><span>WO opened</span></li>
+        <li class="done"><span class="box">✓</span><span>Changeover SOP confirmed</span><span>v4.2</span></li>
+        <li><span class="box"></span><span>Handoff notes to 2nd shift</span><span>pending</span></li>
+      </ol>
+      <figcaption class="sheet-foot"><span>Once paper. Now searchable.</span><span>4 of 5 complete</span></figcaption>
+    </figure>
+    </div>
+  </div>
+
+  <section id="problem">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">The problem</p>
+        <div>
+          <h2>Most digital transformations stall on the shop floor.</h2>
+        </div>
+      </div>
+      <div class="stat">
+        <p class="big">70–80%<small>of transformation efforts fail · McKinsey, Deloitte, BCG</small></p>
+        <div class="causes">
+          <p>The software usually works. What breaks down is everything around it: knowledge gaps between shifts, silos between IT and operations, and frontline teams who were never asked what they needed.</p>
+          <p>When operators see a new tablet as surveillance or extra paperwork, adoption quietly fails, and the pilot never scales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <figure class="band">
+    <img src="img/floor-coils.jpg" alt="Two plant workers in hard hats checking a handheld device between large steel coils" width="2000" height="1330" loading="lazy">
+    <figcaption><div class="wrap"><p>Every rollout starts on the floor, with the people who do the work.</p></div></figcaption>
+  </figure>
+
+  <section id="approach">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Our approach</p>
+        <div>
+          <h2>Technology and culture, handled together.</h2>
+          <p>We combine hands-on IT and connected worker experience with applied anthropology, so the system you deploy fits the way your people really work.</p>
+        </div>
+      </div>
+      <div class="lenses">
+        <div class="lens">
+          <p class="label">The technology</p>
+          <h3>Connected worker strategy</h3>
+          <ul>
+            <li>Digitizing rounds, inspections, and work instructions</li>
+            <li>Platform selection and pilot design</li>
+            <li>Links to maintenance, data historians, and machine vision</li>
+            <li>A long-term roadmap toward Industry 4.0 and 5.0</li>
+          </ul>
+        </div>
+        <div class="lens">
+          <p class="label">The people</p>
+          <h3>Workplace anthropology</h3>
+          <ul>
+            <li>Frontline field research before anything is deployed</li>
+            <li>Surfacing hidden stigmas and resistance early</li>
+            <li>Training and knowledge transfer that fits each shift</li>
+            <li>Adoption and engagement measured, not assumed</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Services</p>
+        <div>
+          <h2>Where we can help, from first study to full rollout.</h2>
+          <p>Each engagement starts with a one-hour consultation to understand your site, your team, and your goals.</p>
+        </div>
+      </div>
+      <div class="services">
+        <article class="svc">
+          <p class="label">Before rollout</p>
+          <h3>Organizational Field Study</h3>
+          <p class="for">For teams planning a connected worker program who want to know what the floor really needs.</p>
+          <ul>
+            <li>On-site observation and interviews across shifts</li>
+            <li>Map of workflows, pain points, and informal knowledge</li>
+            <li>Adoption risks and recommendations</li>
+          </ul>
+          <a href="#contact">Book a consultation →</a>
+        </article>
+        <article class="svc">
+          <p class="label">During the pilot</p>
+          <h3>Pilot Assurance Package</h3>
+          <p class="for">For companies running a pilot who need it to prove value and earn buy-in.</p>
+          <ul>
+            <li>Pilot scope, success metrics, and use cases</li>
+            <li>Frontline champions and change support</li>
+            <li>Results readout for leadership</li>
+          </ul>
+          <a href="#contact">Book a consultation →</a>
+        </article>
+        <article class="svc">
+          <p class="label">After the pilot</p>
+          <h3>Scale-up Accelerator</h3>
+          <p class="for">For organizations ready to take a working pilot to more lines and more sites.</p>
+          <ul>
+            <li>Rollout plan and governance model</li>
+            <li>Repeatable training and onboarding</li>
+            <li>Engagement tracking as you grow</li>
+          </ul>
+          <a href="#contact">Book a consultation →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="story">
+    <div class="wrap story">
+      <p class="label">Our story</p>
+      <div class="story-body">
+        <h2 style="font-size:var(--s5)">It started with a few paper routes.</h2>
+        <figure class="story-photo"><img src="img/training-session.jpg" alt="A diverse group of adults at tables listening to an instructor present on a projector screen in a training room" width="1400" height="1050" loading="lazy"></figure>
+        <p>Inside a large manufacturer, Jeremy was asked to digitize a handful of paper rounds so frontline data would be easier to use. That small project turned out to touch everything on the shop floor: communication, data analysis, training, knowledge transfer, maintenance tracking, and above all, employee engagement.</p>
+        <p>He partnered early with Augmentir, back when “connected worker” wasn't yet an industry term. Rolling out a transformation program from inside the IT silo was hard. Jeremy had one unexpected advantage: he'd married a cultural anthropologist. Jessica joined as a consultant and worked from the frontline up, uncovering hidden stigmas and starting the conversations that drove adoption.</p>
+        <p class="pull">Technology alone doesn't drive transformation. People do.</p>
+        <p>Vertici exists to bring that lesson to other manufacturers: make work smarter, more engaging, and more human, with happier employees and stronger results to show for it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Who we are</p>
+        <div><h2>Strategy, culture, and hands-on delivery.</h2></div>
+      </div>
+      <div class="team">
+        <article class="person">
+          <div class="mono" aria-hidden="true">JB</div>
+          <div>
+            <h3>Jeremy Bauer</h3>
+            <p class="role">Connected Work Strategist</p>
+            <p>Jeremy builds connected worker programs that move organizations toward Industry 4.0 and 5.0. He has helped shape the vision for connected worker programs, machine vision systems, and data historians, and he favors long-term vision over short-term gains.</p>
+          </div>
+        </article>
+        <article class="person">
+          <div class="mono" aria-hidden="true">JB</div>
+          <div>
+            <h3>Jessica Bauer</h3>
+            <p class="role">Workplace Anthropologist</p>
+            <p>Jess brings cultural insight and data together to tackle the human hurdles that come with digitization. She studies how teams actually work and helps them take ownership of the change.</p>
+          </div>
+        </article>
+        <article class="person">
+          <div class="mono" aria-hidden="true">RH</div>
+          <div>
+            <h3>Rob Harwood</h3>
+            <p class="role">Implementation Specialist</p>
+            <p>Rob works directly with clients, onsite and remote, to make sure each site is fully integrated, fully trained, and supported after go-live. His background spans customer support, technical break/fix, and project integration, so he knows what it takes to bring a project into production. He believes that educating clients is what makes a solution embraced and sustainable for the long term.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <p class="label">Get started</p>
+      <h2>Planning a connected worker rollout? Let's talk before the pilot.</h2>
+      <div class="grid">
+        <div><a class="btn btn-primary" href="https://www.verticitech.com/book-online">Book a consultation</a></div>
+        <div class="who"><b>Jeremy Bauer</b><span>Jeremy.Bauer@verticitech.com</span><span>360-852-3246</span></div>
+        <div class="who"><b>Jessica Bauer</b><span>Jessica.Bauer@verticitech.com</span><span>360-852-0337</span></div>
+        <div class="who"><b>Rob Harwood</b><span>Robert.Harwood@verticitech.com</span><span>404-858-8970</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© 2026 Vertici LLC</span><span>Privacy · Terms · Accessibility</span></div>
+</footer>
+
+</body></html>
