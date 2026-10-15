@@ -1,6 +1,7 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
 <title>Vertici LLC</title>
 <meta name="description" content="Vertici LLC helps manufacturers roll out connected worker programs that frontline teams actually adopt.">
+<link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -46,10 +47,11 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--andon);outline-offs
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.9rem}
 .brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink);font-family:var(--f-display);font-weight:800;font-stretch:118%;font-size:1.25rem}
-.brand svg{flex:none}
+.brand .logo{flex:none;display:block;height:40px;width:auto}
 .nav ul{display:flex;gap:1.5rem;list-style:none;margin:0;padding:0;font-family:var(--f-display);font-weight:600;font-size:var(--s2)}
 .nav ul a{color:var(--ink);text-decoration:none}
 .nav ul a:hover{color:var(--steel)}
+.nav ul a.btn-primary,.nav ul a.btn-primary:hover{color:var(--on-andon)}
 @media (max-width:760px){.nav ul li:not(:last-child){display:none}}
 
 /* hero */
@@ -165,10 +167,11 @@ footer{padding-block:1.6rem;font-family:var(--f-mono);font-size:var(--s1);color:
 footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 </style>
 
+</head><body>
 <header>
   <nav class="wrap nav" aria-label="Main">
     <a class="brand" href="#top">
-      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect x="1" y="1" width="28" height="28" rx="3" fill="var(--ink)"/><path d="M8 8 L15 22 L22 8" fill="none" stroke="var(--andon)" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      <img class="logo" src="/img/logo.png" alt="" width="53" height="40">
       Vertici
     </a>
     <ul>
@@ -376,7 +379,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 </main>
 
 <footer>
-  <div class="wrap"><span>© 2026 Vertici LLC</span><span>Privacy · Terms · Accessibility</span></div>
+  <div class="wrap"><span>© 2026 Vertici LLC</span><span><a href="/privacy" style="color:inherit">Privacy</a> · <a href="/accessibility" style="color:inherit">Accessibility</a></span></div>
 </footer>
 
 </body></html>
